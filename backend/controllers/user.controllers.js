@@ -18,15 +18,14 @@ const registerUser = asyncHandler(async (req, res) => {
 
     const hashedPassword = await bcrypt.hash(password, 10)
 
-    const [result] = await pool.query(`
+    await pool.query(`
         INSERT INTO users (username, password)
         VALUES (?, ?)
         `, [username, hashedPassword])
 
     res.json({
-        id: result.insertId,
-        username,
-        password
+        message: 'User created success',
+        success: true
     })
 })
 
