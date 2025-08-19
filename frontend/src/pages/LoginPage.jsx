@@ -2,10 +2,12 @@ import Input from "../components/Input"
 import Button from "../components/Button"
 import { useState, useEffect } from "react"
 import { loginUser, registerUser } from "../services/userService"
+import { useNavigate } from 'react-router-dom'
 
 function LoginPage() {
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
+    const nav = useNavigate()
 
     const handleLogin = async () => {
         const data = await loginUser({username, password})
@@ -14,6 +16,7 @@ function LoginPage() {
             setUsername('')
             setPassword('')
             console.log('success')
+            nav('/')
         } else {
             alert(data.message)
             console.log('unsuccess')
