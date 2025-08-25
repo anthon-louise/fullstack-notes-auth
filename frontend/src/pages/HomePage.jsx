@@ -8,7 +8,12 @@ function HomePage() {
     const [content, setContent] = useState('')
 
     const handleSaveNote = async () => {
-        console.log(title, content)
+        const data = await createNote({title, content})
+        alert(data.message)
+        if (data.success) {
+            setTitle('')
+            setContent('')
+        }
     }
 
     return (
