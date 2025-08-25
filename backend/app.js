@@ -3,6 +3,7 @@ const cookieParser = require('cookie-parser')
 const cors = require('cors')
 const userRoutes = require('./routes/user.routes')
 const noteRoutes = require('./routes/note.routes')
+const authRoutes = require('./routes/auth')
 const errorHandler = require('./middlewares/errorHandler')
 const app = express()
 
@@ -15,6 +16,7 @@ app.use(cors({
 
 app.use('/users', userRoutes)
 app.use('/notes', noteRoutes)
+app.use('/auth', authRoutes)
 
 app.use(errorHandler)
 
