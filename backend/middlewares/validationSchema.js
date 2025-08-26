@@ -11,7 +11,12 @@ const noteSchema = Joi.object({
     content: Joi.string().required().max(200)
 })
 
+const idSchema = Joi.object({
+    id: Joi.number().integer().positive().required()
+})
+
 module.exports = {
     userSchema,
-    noteSchema
+    noteSchema,
+    idSchema
 }

@@ -16,7 +16,8 @@ export async function createNote(body) {
 
 export async function getNotes() {
     try {
-        const res = await axios.get(`${API_URL1}`)
+        const res = await axios.get(`${API_URL}/`, {withCredentials: true})
+        return res.data
     } catch (err) {
         if (err.response && err.response.data) {
             return err.response.data
