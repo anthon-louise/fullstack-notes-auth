@@ -32,8 +32,8 @@ function HomePage() {
         <div>
             <Input value={title} label='Title' onChange={setTitle}/>
             <Input value={content} label='Content' onChange={setContent}/>
-            <Button label='Add Note' type='submit' onClick={handleSaveNote}/>
             <br />
+            <Button label='Add Note' type='submit' onClick={handleSaveNote}/>
             <NoteList notes={notes}/>
         </div>
     )

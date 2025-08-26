@@ -25,3 +25,15 @@ export async function getNotes() {
         return {success: false, message: err.message}
     }
 }
+
+export async function deleteNote(id) {
+    try {
+        const res = await axios.delete(`${API_URL}`, id)
+        return res.data
+    } catch (err) {
+        if (err.response && err.response.data) {
+            return err.response.data
+        }
+        return {success: false, message: err.message}
+    }
+}
