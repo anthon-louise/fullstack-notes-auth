@@ -13,3 +13,14 @@ export async function createNote(body) {
         return {success: false, message: err.message}
     }
 }
+
+export async function getNotes() {
+    try {
+        const res = await axios.get(`${API_URL1}`)
+    } catch (err) {
+        if (err.response && err.response.data) {
+            return err.response.data
+        }
+        return {success: false, message: err.message}
+    }
+}

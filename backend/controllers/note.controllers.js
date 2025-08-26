@@ -19,6 +19,21 @@ const createNote = asyncHandler(async (req, res) => {
     })
 })
 
+const getNotes = asyncHandler(async (req, res) => {
+    const {userId} = req.user
+
+    const [rows] = await pool.query(`
+        SELECT * FROM notes WHERE user_id=?
+        `, [userId])
+
+    res.json({
+        data: rows,
+        message: 'Notes fetched',
+        success: true
+    })
+})
+
 module.exports = {
-    createNote
+    createNote,
+    getNotes
 }
