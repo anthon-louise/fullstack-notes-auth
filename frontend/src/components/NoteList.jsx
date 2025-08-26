@@ -1,5 +1,6 @@
+import Button from "./Button"
 
-function NoteList({ notes }) {
+function NoteList({ notes, handleDeleteNote }) {
     return (
         <div>
             <ul>
@@ -7,6 +8,7 @@ function NoteList({ notes }) {
                     notes.map((note) => (
                         <li key={note.id}>
                             <strong>{note.title}:</strong> {note.content}
+                            <Button label='🗑️' type='submit' onClick={() => handleDeleteNote(note.id)}/>
                         </li>
                     ))
                 }

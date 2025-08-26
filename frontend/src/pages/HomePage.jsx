@@ -1,13 +1,19 @@
 import { useState, useEffect } from "react"
 import Input from "../components/Input"
 import Button from "../components/Button"
-import { createNote, getNotes } from "../services/noteService"
+import { createNote, getNotes, deleteNote } from "../services/noteService"
 import NoteList from "../components/NoteList"
 
 function HomePage() {
     const [title, setTitle] = useState('')
     const [content, setContent] = useState('')
     const [notes, setNotes] = useState([])
+
+    const handleDeleteNote = async (id) => {
+        const data = await deleteNote(id)
+        alert(data.message)
+        fetchNotes()
+    }
 
     const handleSaveNote = async () => {
         const data = await createNote({title, content})
@@ -32,9 +38,9 @@ function HomePage() {
         <div>
             <Input value={title} label='Title' onChange={setTitle}/>
             <Input value={content} label='Content' onChange={setContent}/>
-            <br />
             <Button label='Add Note' type='submit' onClick={handleSaveNote}/>
-            <NoteList notes={notes}/>
+            <br />
+            <NoteList notes={notes} handleDeleteNote={handleDeleteNote}/>
         </div>
     )
 }

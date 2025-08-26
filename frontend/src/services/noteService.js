@@ -28,7 +28,7 @@ export async function getNotes() {
 
 export async function deleteNote(id) {
     try {
-        const res = await axios.delete(`${API_URL}`, id)
+        const res = await axios.delete(`${API_URL}/${id}`, {withCredentials: true})
         return res.data
     } catch (err) {
         if (err.response && err.response.data) {
