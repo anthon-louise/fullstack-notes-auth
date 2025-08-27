@@ -1,4 +1,5 @@
 import Button from "./Button"
+import { Link } from 'react-router-dom'
 
 function NoteList({ notes, handleDeleteNote }) {
     return (
@@ -8,7 +9,8 @@ function NoteList({ notes, handleDeleteNote }) {
                     notes.map((note) => (
                         <li key={note.id}>
                             <strong>{note.title}:</strong> {note.content}
-                            <Button label='🗑️' type='submit' onClick={() => handleDeleteNote(note.id)}/>
+                            <Link to={`/edit/${note.id}`}>✏️</Link>
+                            <Button label='🗑️' type='submit' onClick={() => handleDeleteNote(note.id)} />
                         </li>
                     ))
                 }
