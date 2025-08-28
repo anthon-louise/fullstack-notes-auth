@@ -26,9 +26,33 @@ export async function getNotes() {
     }
 }
 
+export async function getNoteById(id) {
+    try {
+        const res = await axios.get(`${API_URL}/${id}`, {withCredentials: true})
+        return res.data
+    } catch (err) {
+        if (err.response && err.response.data) {
+            return err.response.data
+        }
+        return {success: false, message: err.message}
+    }
+}
+
 export async function deleteNote(id) {
     try {
         const res = await axios.delete(`${API_URL}/${id}`, {withCredentials: true})
+        return res.data
+    } catch (err) {
+        if (err.response && err.response.data) {
+            return err.response.data
+        }
+        return {success: false, message: err.message}
+    }
+}
+
+export async function updateNote(id, note) {
+    try {
+        const res = await axios.put(`${API_URL}/${id}`, note, {withCredentials: true})
         return res.data
     } catch (err) {
         if (err.response && err.response.data) {

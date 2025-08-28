@@ -12,7 +12,6 @@ function App() {
         <Route path='/register' element={<RegisterPage />} />
         <Route path='/login' element={<LoginPage />} />
         <Route path='/edit/:id' element={<EditPage/>}/>
-
         <Route
           path='/'
           element={
