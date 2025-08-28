@@ -11,7 +11,13 @@ function App() {
       <Routes>
         <Route path='/register' element={<RegisterPage />} />
         <Route path='/login' element={<LoginPage />} />
-        <Route path='/edit/:id' element={<EditPage/>}/>
+        <Route
+          path='/edit/:id'
+          element={
+            <ProtectedRoute>
+              <EditPage />
+            </ProtectedRoute>
+          } />
         <Route
           path='/'
           element={
